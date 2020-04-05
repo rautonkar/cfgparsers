@@ -1,0 +1,49 @@
+Module Name,SSP Feature,Supported Synergy MCU Groups
+r_adc,A/D Converter,"S124, S128, S3A3, S3A6, S3A7,  S5D5, S5D9, S7G2"
+r_agt,Asynchronous General Purpose Timer,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_cac,Clock Frequency Accuracy Measurement Circuit,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_can,Controller Area Network,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_cgc,Clock Generation Circuit,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_crc,Cyclic Redundancy Check Calculator,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_ctsu,Capacitive Touch Sensing Unit,"S124, S128, S3A7, S5D5, S7G2"
+r_dac,Digital to Analog Converter,"S124, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_dac8,8-bit Digital to Analog Converter,"S128, S3A3"
+r_dmac,Direct Memory Access Controller,"S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_doc,Data Operation Circuit,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_dtc,Data Transfer Controller,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_elc,Event Link Controller,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_flash_hp,"Flash Memory, High Performance","S5D5, S5D9, S7G2"
+r_flash_lp,"Flash Memory, Low Power","S124, S128, S3A3, S3A6, S3A7"
+r_fmi,Factory Microcontroller Information,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_glcd,Graphics LCD Controller,"S5D9, S7G2,"
+r_gpt,General Purpose Timer,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2, "
+r_gpt_input_capture,General Input Capture,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_icu,Interrupt Controller Unit,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_ioport,General Purpose I/O Ports,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_iwdt,Independent Watchdog Timer,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_jpeg_decode,JPEG Decode,"S5D9, S7G2"
+r_kint,Keyboard Interrupt Interface,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_lpm†,Low Power Mode,"S124, S3A7, S7G2"
+r_lpmv2_s124,Low Power Mode V2 for S124,S124
+r_lpmv2_s128,Low Power Mode V2 for S128,S128
+r_lpmv2_s3a7,Low Power Mode V2 for S3A7,S3A7
+r_lpmv2_s5d9,Low Power Mode V2 for S5D9,S5D9
+r_lpmv2_s7g2,Low Power Mode V2 for S7G2,S7G2
+r_lpmv2_s5d5,Low Power Mode V2 for S5D5,S5D5
+r_lpmv2_s3a6,Low Power Mode V2 for S3A6,S3A6
+r_lpmv2_s3a3,Low Power Mode V2 for S3A3,S3A3
+r_lvd,Low Voltage Detection Driver,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_pdc,Parallel Data Capture Unit ,"S5D5, S5D9, S7G2"
+r_qspi,Quad Serial Peripheral Interface,"S3A3, S3A7, S5D5, S5D9, S7G2"
+r_riic,IIC,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_riic_slave,IIC Slave,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_rspi,Serial Peripheral Interface,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_rtc,Real-time Clock,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_sci_i2c,Serial Communication Interface I2C,"S124, S128, S3A3, S3A6, S3A7, S5D5, S7G2"
+r_sci_spi,Serial Communication Interface SPI,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_sci_uart,Serial Communication Interface UART,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_sdmmc,SDHI Driver for SDIO and SD/MMC Memory Devices,"S3A3, S3A7, S5D9, S7G2"
+r_slcdc,Segment LCD Controller,"S3A3, S3A6, S3A7 "
+r_ssi,(Inter-IC Sound) Interface [old: Serial Sound Interface] or r_i2s,"S3A3,S3A6, S3A7, S5D5, S5D9, S7G2 "
+r_wdt,Watchdog Timer,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2"
+r_sce,Cryptographic Library (HAL interfaces),See table note on Cryptographic Functions.

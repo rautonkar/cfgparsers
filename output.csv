@@ -1,0 +1,53 @@
+Module Name,SSP Feature,Supported Synergy MCU Groups,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\DyAnsys_ansiscope.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\DyAnsys_neurostimulator.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\DyAnsys_vitaminm.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\Sparton_Config.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\Sparton_botox.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\technosoft_cl.xml,C:\Users\onkar.raut\Documents\2018H1\MBO\MBO1p1\Field-Feeback\reformatted\technosoft_im.xml
+fx,FileX,"S124, S3A3, S3A6, S3A7, S5D9, S7G2",N,N,N,N,Y,Y,Y
+gx,GUIX,"S5D9, S7G2",N,N,N,N,Y,Y,Y
+nx,NetX,"S5D9, S7G2",N,N,N,N,N,N,N
+nx_auto_ip,NetX Auto IP,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_bsd,NetX BSD,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_dhcp_client,NetX DHCP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_dhcp_server,NetX DHCP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_dns_client,NetX DNS Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_ftp_client,NetX FTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_ftp_server,NetX FTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_http_client,NetX HTTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_http_server,NetX HTTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_pop3,NetX POP3,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_ppp,NetX PPP,"S5D9, S7G2*",N,N,N,N,N,N,N
+nx_smtp_client,NetX SMTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_sntp_client,NetX SNTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_telnet_client,NetX Telnet Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_telnet_server,NetX Telnet Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_tftp_client,NetX TFTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nx_tftp_server,NetX TFTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd,NetX Duo Stack,"S5D9, S7G2",N,N,N,N,N,N,N
+nxd_auto_ip,NetX Duo Auto IP,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_bsd,NetX Duo BSD,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_dhcp,NetX Duo DHCP IPv4 Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_dhcp,NetX Duo DHCP IPv6 Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_dhcp_server,NetX Duo DHCP IPv4 Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_dhcp_server,NetX Duo DHCP IPv6 Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_dns,NetX Duo DNS Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_ftp_client,NetX Duo FTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_ftp_server,NetX Duo FTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_http_client,NetX Duo HTTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_http_server,NetX Duo HTTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_nat,NetX Duo NAT,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_pop3,NetX Duo POP3,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_ppp,NetX Duo PPP,"S5D9, S7G2*",N,N,N,N,N,N,N
+nxd_smtp_client,NetX Duo SMTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_sntp_client,NetX Duo SNTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_telnet_client,NetX Duo Telnet Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_telnet_server,NetX Duo Telnet Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_tftp_client,NetX Duo TFTP Client,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_tftp_server,NetX Duo TFTP Server,"S5D9*, S7G2",N,N,N,N,N,N,N
+nxd_mqtt_client,NetX Duo MQTT Client,"S5D9, S7G2",N,N,N,N,N,N,N
+nxd_tls_secure,NetX Duo TLS Secure,"S5D9, S7G2",N,N,N,N,N,N,N
+tx,ThreadX,"S124, S128, S3A3, S3A6, S3A7, S5D5, S5D9, S7G2",Y,Y,Y,Y,Y,Y,Y
+ux_device_class_storage,USBX Device Class Mass Storage,"S124, S128, S3A3, S3A6, S3A7, S5D9, S7G2",N,N,N,N,N,N,N
+ux_device_class_hid,USBX Device Class HID,"S124, S128, S3A3, S3A6, S3A7, S5D9, S7G2",N,N,N,N,N,N,N
+ux_device_class_cdc_acm,USBX Device Class CDC-ACM,"S124, S128, S3A3, S3A6, S3A7, S5D9, S7G2",N,N,Y,Y,Y,N,N
+ux_host_class_cdc_acm,USBX Host Class CDC-ACM,"S5D9, S7G2, S3A3, S3A6, S3A7",N,N,N,N,N,N,N
+ux_host_class_hid,USBX Host Class HID,"S5D9, S3A3, S3A7, S7G2",N,N,N,N,N,N,N
+ux_host_class_hub,USBX Host HUB,"S5D9, S7G2",N,N,N,N,Y,N,N
+ux_host_class_storage,USBX Host Class Mass Storage,"S3A3, S3A7, S5D9, S7G2",N,N,N,N,Y,Y,N
+ux_host_class_storage,USBX Host Class Mass Storage,"S3A3, S3A7, S5D9, S7G2",N,N,N,N,Y,Y,N
