@@ -126,7 +126,8 @@ class XMLCFG(object):
 
             new_component = COMPONENT(vendor, class_name, subgroup, group, version, variant)
             
-            fp = moduleDescriptions + new_component.file
+            fp = os.path.join(moduleDescriptions,new_component.file)
+            
             if False == os.path.isfile(fp):
                     raise CLIError("%s does not exist at location specified by --install" % fp)
             
@@ -191,8 +192,8 @@ class XMLCFG(object):
                     if xmlelmt.hasAttribute("value"):
                         val = xmlelmt.getAttribute("value")
                         if prpty.default != val:
-                            print("%s is set to \"%s\" different from default \"%s\"" %
-                                  (prpty.idf, val, prpty.default))
+                            print("%s is set to \"%s\" different from default \"%s\" Non-Default Property Description: \"%s\"" %
+                                  (prpty.idf, val, prpty.default, prpty.description))
         return 
 
 def main(argv=None): # IGNORE:C0111
@@ -228,7 +229,7 @@ USAGE
         parser.add_argument("-r", "--recursive", dest="recurse", action="store_true", help="recurse into subfolders [default: %(default)s]")
         parser.add_argument('-l', '--log', dest='logfile', help='Specify where logger information should be output.')
         parser.add_argument("-v", "--verbose", dest="verbose", action="count", help="set verbosity level [default: %(default)s]")
-        parser.add_argument("-i", "--install", dest="install", help="Path to location where Renesas Software Package Tool, such as e2studio or Smart Configurator, is installed. [default: %(default)s]", metavar="RE" )
+        parser.add_argument("-i", "--install", dest="install", help="Path to location where module descriptions used by Renesas Software Package Tool, such as e2studio or Smart Configurator, are installed. [default: %(default)s]", metavar="RE" )
         parser.add_argument("-e", "--exclude", dest="exclude", help="exclude paths matching this regex pattern. [default: %(default)s]", metavar="RE" )
         parser.add_argument('-V', '--version', action='version', version=program_version_message)
         parser.add_argument('-x', '--xml', dest='xmlfile', help='Specify full path to one or more configuration.xml files. E.g.: \"./my_folder/configuration.xml\" ')
@@ -256,20 +257,17 @@ USAGE
             else:
                 logging.info("Recursive mode off")
                 
-        if False == os.path.exists(inpat):
+        if False == os.path.exists(inpat) or 0 == len(os.listdir(inpat)):
             raise CLIError("Installation Directory does not contain XMLs")
-        elif False == os.path.exists(inpat + r"/internal/projectgen/ra/modules"):
-            raise CLIError("Installation Directory does not contain XMLs extracted from pack file. Run the configurator atleast once.")
 
         if inpat and expat and inpat == expat:
             raise CLIError("include and exclude pattern are equal! Nothing will be processed.")
         
         listxml = []
-        modules = inpat + r"/internal/projectgen/ra/modules/"
 
         for inpath in paths:
             ### do something with inpath ###
-            obj = XMLCFG(modules,inpath)
+            obj = XMLCFG(inpat,inpath)
             obj.printChangedPropertyValues()
             listxml.append(obj)
         return 0
