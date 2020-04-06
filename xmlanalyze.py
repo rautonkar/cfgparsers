@@ -47,7 +47,7 @@ class CLIError(Exception):
 
 class PROPERTY(object):
     def __init__(self, idf, dflt, desc):
-        self.id = idf
+        self.idf = idf
         self.default = dflt
         self.description = desc
         
@@ -74,7 +74,7 @@ class COMPONENT(object):
                                      group, 
                                      version,
                                      variant,
-                                     file))
+                                     self.file))
 
 class XMLCFG(object):
     def __init__(self, moduleDescriptions, xmlpath):
@@ -164,12 +164,37 @@ class XMLCFG(object):
         
         return
     
-    def read_defaults(self): 
+    def printChangedPropertyValues(self):
+        propertySetForAllComponents = set()
+        
+        """ Build a set of unique IDs """
         for component in self.component_list:
-            self.DOMTree = xml.dom.minidom.parse(component.file)
+            for prprty in component.property_list:
+                propertySetForAllComponents.add(prprty)
             
         
+        propertyListInXML = self.cproject.getElementsByTagName("property")
         
+        prptyIdentifiers = []
+        for prpty in propertyListInXML:
+            idf = r""
+            if prpty.hasAttribute("id"):
+                idf += prpty.getAttribute("id")
+            
+            prptyIdentifiers.append([idf, propertyListInXML.index(prpty)])
+            
+        for itr in prptyIdentifiers:
+            for prpty in propertySetForAllComponents:
+                if prpty.idf == itr[0]:
+                    logging.info("Testing Property %s" % prpty.idf)
+                    xmlelmt = propertyListInXML[itr[1]]
+                    if xmlelmt.hasAttribute("value"):
+                        val = xmlelmt.getAttribute("value")
+                        if prpty.default != val:
+                            print("%s is set to \"%s\" different from default \"%s\"" %
+                                  (prpty.idf, val, prpty.default))
+        return 
+
 def main(argv=None): # IGNORE:C0111
     '''Command line options.'''
 
@@ -215,8 +240,8 @@ USAGE
         
         if args.logfile is not None:
             logging.basicConfig(filename=args.logfile, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-        else:
-            logging.basicConfig(level=logging.INFO, format='%(module)s: %(asctime)s - %(levelname)s - %(message)s')
+#         else:
+#             logging.basicConfig(level=logging.INFO, format='%(module)s: %(asctime)s - %(levelname)s - %(message)s')
 
         paths = args.paths
         verbose = args.verbose
@@ -245,6 +270,7 @@ USAGE
         for inpath in paths:
             ### do something with inpath ###
             obj = XMLCFG(modules,inpath)
+            obj.printChangedPropertyValues()
             listxml.append(obj)
         return 0
     except KeyboardInterrupt:
