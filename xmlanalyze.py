@@ -184,7 +184,7 @@ class XMLCFG(object):
             
             prptyIdentifiers.append([idf, propertyListInXML.index(prpty)])
         
-        print("Property,Value,Default")
+        print("Property,Value,Default,")
         for itr in prptyIdentifiers:
             for prpty in propertySetForAllComponents:
                 if prpty.idf == itr[0]:
@@ -243,7 +243,6 @@ USAGE
         loglevel = logging.NOTSET
         paths = args.paths
         verbose = args.verbose
-        recurse = args.recurse
         inpat = args.install
         expat = args.exclude
 
@@ -263,11 +262,13 @@ USAGE
 
         
         if args.logfile is not None:
-            logging.debug("Verbose mode on")
             logging.basicConfig(filename=args.logfile, level=loglevel, format='%(asctime)s - %(levelname)s - %(message)s')
         else:
             logging.basicConfig(level=loglevel, format='%(module)s: %(asctime)s - %(levelname)s - %(message)s')
         
+        if verbose > 0:
+                logging.debug("Verbose mode on")
+            
         if False == os.path.exists(inpat) or 0 == len(os.listdir(inpat)):
             raise CLIError("Installation Directory does not contain XMLs")
 
