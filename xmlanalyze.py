@@ -183,7 +183,8 @@ class XMLCFG(object):
                 idf += prpty.getAttribute("id")
             
             prptyIdentifiers.append([idf, propertyListInXML.index(prpty)])
-            
+        
+        print("Property,Value,Default")
         for itr in prptyIdentifiers:
             for prpty in propertySetForAllComponents:
                 if prpty.idf == itr[0]:
@@ -192,8 +193,8 @@ class XMLCFG(object):
                     if xmlelmt.hasAttribute("value"):
                         val = xmlelmt.getAttribute("value")
                         if prpty.default != val:
-                            print("%s is set to \"%s\" different from default \"%s\" Non-Default Property Description: \"%s\"" %
-                                  (prpty.idf, val, prpty.default, prpty.description))
+                            print("%s,%s,%s," %
+                                  (prpty.idf, val.replace(prpty.idf,""), prpty.default.replace(prpty.idf,"")))
         return 
 
 def main(argv=None): # IGNORE:C0111
@@ -239,11 +240,7 @@ USAGE
         # Process arguments
         args = parser.parse_args()
         
-        if args.logfile is not None:
-            logging.basicConfig(filename=args.logfile, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
-#         else:
-#             logging.basicConfig(level=logging.INFO, format='%(module)s: %(asctime)s - %(levelname)s - %(message)s')
-
+        loglevel = logging.NOTSET
         paths = args.paths
         verbose = args.verbose
         recurse = args.recurse
@@ -251,12 +248,26 @@ USAGE
         expat = args.exclude
 
         if verbose > 0:
-            print("Verbose mode on")
-            if recurse:
-                logging.info("Recursive mode on")
+            if verbose == 1:
+                loglevel = logging.CRITICAL
+            elif verbose == 2:
+                loglevel = logging.ERROR
+            elif verbose == 3:
+                loglevel = logging.WARNING
+            elif verbose == 4:
+                loglevel = logging.INFO
+            elif verbose == 5:
+                loglevel = logging.DEBUG
             else:
-                logging.info("Recursive mode off")
-                
+                loglevel = logging.NOTSET
+
+        
+        if args.logfile is not None:
+            logging.debug("Verbose mode on")
+            logging.basicConfig(filename=args.logfile, level=loglevel, format='%(asctime)s - %(levelname)s - %(message)s')
+        else:
+            logging.basicConfig(level=loglevel, format='%(module)s: %(asctime)s - %(levelname)s - %(message)s')
+        
         if False == os.path.exists(inpat) or 0 == len(os.listdir(inpat)):
             raise CLIError("Installation Directory does not contain XMLs")
 
