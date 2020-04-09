@@ -46,10 +46,11 @@ class CLIError(Exception):
         return self.msg
 
 class PROPERTY(object):
-    def __init__(self, idf, dflt, desc):
+    def __init__(self, idf, dflt, desc, disp):
         self.idf = idf
         self.default = dflt
         self.description = desc
+        self.display = disp
         
         logging.info("Property: Id:%s, Default:%s, Desc:%s " %  (idf,dflt, desc))
 
@@ -141,13 +142,16 @@ class XMLCFG(object):
                 idf = r""
                 idfDefault = r""
                 idfDescription = r""
+                idfDisplay = r""
                 if prpty.hasAttribute("id"):
                     idf += prpty.getAttribute("id")
                 if prpty.hasAttribute("default"):
                     idfDefault += prpty.getAttribute("default")
                 if prpty.hasAttribute("description"):
                     idfDescription += prpty.getAttribute("description")
-                newProperty = PROPERTY(idf, idfDefault, idfDescription)
+                if prpty.hasAttribute("display"):
+                    idfDisplay += prpty.getAttribute("display")
+                newProperty = PROPERTY(idf, idfDefault, idfDescription, idfDisplay)
                 
                 new_component.property_list.add(newProperty)
             
@@ -184,7 +188,7 @@ class XMLCFG(object):
             
             prptyIdentifiers.append([idf, propertyListInXML.index(prpty)])
         
-        print("Property,Value,Default,Description")
+        print("Identifier,Value,Default,Display,Description")
         for itr in prptyIdentifiers:
             for prpty in propertySetForAllComponents:
                 if prpty.idf == itr[0]:
@@ -193,8 +197,8 @@ class XMLCFG(object):
                     if xmlelmt.hasAttribute("value"):
                         val = xmlelmt.getAttribute("value")
                         if prpty.default != val:
-                            print("%s,%s,%s,%s" %
-                                  (prpty.idf, val.replace(prpty.idf,""), prpty.default.replace(prpty.idf,""),prpty.description))
+                            print("%s,%s,%s,%s,%s" %
+                                  (prpty.idf, val.replace(prpty.idf,""), prpty.default.replace(prpty.idf,""), prpty.display, prpty.description))
         return 
 
 def main(argv=None): # IGNORE:C0111
@@ -231,7 +235,6 @@ USAGE
         parser.add_argument("-v", "--verbose", dest="verbose", action="count", help="set verbosity level [default: %(default)s]")
         parser.add_argument("-i", "--install", dest="install", help="Path to location where module descriptions used by Renesas Software Package Tool, such as e2studio or Smart Configurator, are installed. [default: %(default)s]", metavar="PATH" )
         parser.add_argument('-V', '--version', action='version', version=program_version_message)
-        parser.add_argument('-x', '--xml', dest='xmlfile', help='Specify full path to one or more configuration.xml files. E.g.: \"./my_folder/configuration.xml\" ')
         
         parser.add_argument(dest="paths", help="paths to folder(s) with source file(s) [default: %(default)s]", metavar="path", nargs='+')
 
