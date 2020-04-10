@@ -46,6 +46,7 @@ class CLIError(Exception):
         return self.msg
 
 class PROPERTY(object):
+    ''' Property Inforamtion stored in XML file'''
     def __init__(self, idf, dflt, desc, disp):
         self.idf = idf
         self.default = dflt
@@ -55,6 +56,7 @@ class PROPERTY(object):
         logging.info("Property: Id:%s, Default:%s, Desc:%s " %  (idf,dflt, desc))
 
 class COMPONENT(object):
+    ''' Component Inforamtion stored in XML file'''
     def __init__(self, vendor, class_name, subgroup, group, version, variant):
         self.vendor = vendor
         self.class_name = class_name
@@ -199,7 +201,24 @@ class XMLCFG(object):
                         if prpty.default != val:
                             print("%s,%s,%s,%s,%s" %
                                   (prpty.idf, val.replace(prpty.idf,""), prpty.default.replace(prpty.idf,""), prpty.display, prpty.description))
-        return 
+        return
+    
+    def printComponents(self):
+        print("Vendor, Class Name, Group, Sub-group, Variant, Version")
+        
+        printset = sorted(self.component_list, 
+                          key=lambda COMPONENT:(COMPONENT.vendor, 
+                                                COMPONENT.class_name,
+                                                COMPONENT.group,
+                                                COMPONENT.subgroup,
+                                                COMPONENT.variant,
+                                                COMPONENT.version))           
+        
+        for component in printset:
+            print("%s, %s, %s, %s, %s, %s" % 
+                  (component.vendor, component.class_name, 
+                   component.group, component.subgroup, 
+                   component.variant, component.version))
 
 def main(argv=None): # IGNORE:C0111
     '''Command line options.'''
@@ -234,6 +253,8 @@ USAGE
         parser.add_argument('-l', '--log', dest='logfile', help='Specify where logger information should be output.')
         parser.add_argument("-v", "--verbose", dest="verbose", action="count", help="set verbosity level [default: %(default)s]")
         parser.add_argument("-i", "--install", dest="install", help="Path to location where module descriptions used by Renesas Software Package Tool, such as e2studio or Smart Configurator, are installed. [default: %(default)s]", metavar="PATH" )
+        parser.add_argument("-d", "--diff", dest="diff", action="store_true", help="Print the difference between default configuration properties and properties in selected XML file.")
+        parser.add_argument("-c", "--components", dest="lcomp", action="store_true", help="Print the components found in selected XML file.")
         parser.add_argument('-V', '--version', action='version', version=program_version_message)
         
         parser.add_argument(dest="paths", help="paths to folder(s) with source file(s) [default: %(default)s]", metavar="path", nargs='+')
@@ -245,6 +266,8 @@ USAGE
         paths = args.paths
         verbose = args.verbose
         inpat = args.install
+        diff = args.diff
+        printcomponents = args.lcomp
 
         if verbose > 0:
             if verbose == 1:
@@ -277,7 +300,10 @@ USAGE
         for inpath in paths:
             ### do something with inpath ###
             obj = XMLCFG(inpat,inpath)
-            obj.printChangedPropertyValues()
+            if printcomponents == True:
+                obj.printComponents()
+            if diff==True:
+                obj.printChangedPropertyValues()
             listxml.append(obj)
         return 0
     except KeyboardInterrupt:
